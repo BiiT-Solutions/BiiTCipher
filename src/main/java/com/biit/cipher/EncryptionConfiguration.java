@@ -6,19 +6,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class EncryptionConfiguration {
 
-    public static String eventEncryptionKey;
-    public static String eventEncryptionSalt;
+    public static String encryptionKey;
+    public static String encryptionSalt;
 
-    public EncryptionConfiguration(@Value("${encryption.key:}") String eventEncryptionKey, @Value("${encryption.salt:}") String eventEncryptionSalt) {
-        setEventEncryptionKey(eventEncryptionKey);
+    public EncryptionConfiguration(@Value("${encryption.key:}") String encryptionKey, @Value("${encryption.salt:}") String encryptionSalt) {
+        setEncryptionKey(encryptionKey);
+        setEncryptionSalt(encryptionSalt);
     }
 
-    private static synchronized void setEventEncryptionKey(String eventEncryptionKey) {
-        EncryptionConfiguration.eventEncryptionKey = eventEncryptionKey;
+    private static synchronized void setEncryptionKey(String encryptionKey) {
+        EncryptionConfiguration.encryptionKey = encryptionKey;
     }
 
-    private static synchronized void setEventEncryptionSalt(String eventEncryptionSalt) {
-        EncryptionConfiguration.eventEncryptionSalt = eventEncryptionSalt;
+    private static synchronized void setEncryptionSalt(String encryptionSalt) {
+        EncryptionConfiguration.encryptionSalt = encryptionSalt;
     }
 
 

@@ -13,8 +13,8 @@ import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.util.Random;
 
-import static com.biit.cipher.EncryptionConfiguration.eventEncryptionKey;
-import static com.biit.cipher.EncryptionConfiguration.eventEncryptionSalt;
+import static com.biit.cipher.EncryptionConfiguration.encryptionKey;
+import static com.biit.cipher.EncryptionConfiguration.encryptionSalt;
 
 public class CipherInitializer {
 
@@ -62,20 +62,20 @@ public class CipherInitializer {
         return new IvParameterSpec(iv);
     }
 
-    private static Cipher getCipherForDecrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
+    public static Cipher getCipherForDecrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
             InvalidKeyException, InvalidKeySpecException {
         if (cipherDecryptor == null) {
             final CipherInitializer cipherInitializer = new CipherInitializer();
-            cipherDecryptor = cipherInitializer.prepareAndInitCipher(Cipher.DECRYPT_MODE, eventEncryptionKey, eventEncryptionSalt);
+            cipherDecryptor = cipherInitializer.prepareAndInitCipher(Cipher.DECRYPT_MODE, encryptionKey, encryptionSalt);
         }
         return cipherDecryptor;
     }
 
-    private static Cipher getCipherForEncrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
+    public static Cipher getCipherForEncrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
             InvalidKeyException, InvalidKeySpecException {
         if (cipherEncryptor == null) {
             final CipherInitializer cipherInitializer = new CipherInitializer();
-            cipherEncryptor = cipherInitializer.prepareAndInitCipher(Cipher.ENCRYPT_MODE, eventEncryptionKey, eventEncryptionSalt);
+            cipherEncryptor = cipherInitializer.prepareAndInitCipher(Cipher.ENCRYPT_MODE, encryptionKey, encryptionSalt);
         }
         return cipherEncryptor;
     }
