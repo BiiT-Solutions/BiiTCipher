@@ -1,5 +1,6 @@
 package com.biit.cipher;
 
+import com.biit.cipher.logger.CipherLogger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +16,12 @@ public class EncryptionConfiguration {
     }
 
     private static synchronized void setEncryptionKey(String encryptionKey) {
+        CipherLogger.debug(EncryptionConfiguration.class, "Encryption key '" + encryptionKey + "'.");
         EncryptionConfiguration.encryptionKey = encryptionKey;
     }
 
     private static synchronized void setEncryptionSalt(String encryptionSalt) {
+        CipherLogger.debug(EncryptionConfiguration.class, "Encryption salt '" + encryptionSalt + "'.");
         EncryptionConfiguration.encryptionSalt = encryptionSalt;
     }
 
