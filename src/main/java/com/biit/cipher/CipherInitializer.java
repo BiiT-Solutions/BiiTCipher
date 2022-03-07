@@ -22,9 +22,6 @@ public class CipherInitializer {
 
     private static final String CIPHER_INSTANCE_NAME = "AES/CBC/PKCS5Padding";
     private static final String SECRET_KEY_ALGORITHM = "AES";
-    private static final int LEFT_LIMIT = 97; // letter 'a'
-    private static final int RIGHT_LIMIT = 122; // letter 'z'
-    private static final int DEFAULT_SALT_LENGTH = 10;
     private static Cipher cipherEncryptor;
     private static Cipher cipherDecryptor;
 
@@ -34,13 +31,8 @@ public class CipherInitializer {
         final Cipher cipher = Cipher.getInstance(CIPHER_INSTANCE_NAME);
 
         if (salt == null) {
-            CipherLogger.warning(EncryptionConfiguration.class, "No salt set, generating a random one.");
-            final Random random = new SecureRandom();
-            salt = random.ints(LEFT_LIMIT, RIGHT_LIMIT + 1)
-                    .limit(DEFAULT_SALT_LENGTH)
-                    .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                    .toString();
-            CipherLogger.warning(EncryptionConfiguration.class, "Random salt set as '" + salt + "'.");
+            CipherLogger.warning(EncryptionConfiguration.class, "Setting an empty salt.");
+            salt = "";
         }
 
         final KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes(StandardCharsets.UTF_8), 65536, 256); // AES-256
