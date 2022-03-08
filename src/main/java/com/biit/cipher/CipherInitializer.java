@@ -31,7 +31,7 @@ public class CipherInitializer {
         final Cipher cipher = Cipher.getInstance(CIPHER_INSTANCE_NAME);
 
         if (salt == null) {
-            CipherLogger.warning(EncryptionConfiguration.class, "Setting an empty salt.");
+            CipherLogger.warning(EncryptionConfiguration.class, "No salt set, generating an empty one.");
             salt = "";
         }
 
@@ -63,18 +63,36 @@ public class CipherInitializer {
     public static Cipher getCipherForDecrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
             InvalidKeyException, InvalidKeySpecException {
         if (cipherDecryptor == null) {
-            final CipherInitializer cipherInitializer = new CipherInitializer();
-            cipherDecryptor = cipherInitializer.prepareAndInitCipher(Cipher.DECRYPT_MODE, encryptionKey, encryptionSalt);
+            cipherDecryptor = getNewCipherForDecrypt();
         }
         return cipherDecryptor;
+    }
+
+    public static Cipher getNewCipherForDecrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
+            InvalidKeyException, InvalidKeySpecException {
+        final CipherInitializer cipherInitializer = new CipherInitializer();
+        return cipherInitializer.prepareAndInitCipher(Cipher.DECRYPT_MODE, encryptionKey, encryptionSalt);
+    }
+
+    public static void resetCipherForDecrypt() {
+        cipherDecryptor = null;
     }
 
     public static Cipher getCipherForEncrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
             InvalidKeyException, InvalidKeySpecException {
         if (cipherEncryptor == null) {
-            final CipherInitializer cipherInitializer = new CipherInitializer();
-            cipherEncryptor = cipherInitializer.prepareAndInitCipher(Cipher.ENCRYPT_MODE, encryptionKey, encryptionSalt);
+            cipherEncryptor = getNewCipherForEncrypt();
         }
         return cipherEncryptor;
+    }
+
+    public static Cipher getNewCipherForEncrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
+            InvalidKeyException, InvalidKeySpecException {
+        final CipherInitializer cipherInitializer = new CipherInitializer();
+        return cipherInitializer.prepareAndInitCipher(Cipher.ENCRYPT_MODE, encryptionKey, encryptionSalt);
+    }
+
+    public static void resetCipherForEncrypt() {
+        cipherEncryptor = null;
     }
 }
