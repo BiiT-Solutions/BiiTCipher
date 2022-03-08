@@ -77,6 +77,10 @@ public class CipherInitializer {
         return cipherDecryptor;
     }
 
+    public static void resetCipherForDecrypt() {
+        cipherDecryptor = null;
+    }
+
     public static Cipher getCipherForEncrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
             InvalidKeyException, InvalidKeySpecException {
         if (cipherEncryptor == null) {
@@ -84,5 +88,9 @@ public class CipherInitializer {
             cipherEncryptor = cipherInitializer.prepareAndInitCipher(Cipher.ENCRYPT_MODE, encryptionKey, encryptionSalt);
         }
         return cipherEncryptor;
+    }
+
+    public static void resetCipherForEncrypt() {
+        cipherEncryptor = null;
     }
 }
