@@ -13,7 +13,6 @@ import java.security.*;
 import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
-import java.util.Random;
 
 import static com.biit.cipher.EncryptionConfiguration.encryptionKey;
 import static com.biit.cipher.EncryptionConfiguration.encryptionSalt;
@@ -22,8 +21,8 @@ public class CipherInitializer {
 
     private static final String CIPHER_INSTANCE_NAME = "AES/CBC/PKCS5Padding";
     private static final String SECRET_KEY_ALGORITHM = "AES";
-    private static Cipher cipherEncryptor;
-    private static Cipher cipherDecryptor;
+    private static EncryptCipherPool encryptCipherPool = new EncryptCipherPool();
+    private static DecryptCipherPool decryptCipherPool = new DecryptCipherPool();
 
     public Cipher prepareAndInitCipher(int encryptionMode, String password, String salt) throws InvalidKeyException, NoSuchPaddingException,
             NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeySpecException {
@@ -60,12 +59,8 @@ public class CipherInitializer {
         return new IvParameterSpec(iv);
     }
 
-    public static Cipher getCipherForDecrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
-            InvalidKeyException, InvalidKeySpecException {
-        if (cipherDecryptor == null) {
-            cipherDecryptor = getNewCipherForDecrypt();
-        }
-        return cipherDecryptor;
+    public static Cipher getCipherForDecrypt() {
+        return decryptCipherPool.getNextElement();
     }
 
     public static Cipher getNewCipherForDecrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
@@ -75,15 +70,11 @@ public class CipherInitializer {
     }
 
     public static void resetCipherForDecrypt() {
-        cipherDecryptor = null;
+        decryptCipherPool.reset();
     }
 
-    public static Cipher getCipherForEncrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
-            InvalidKeyException, InvalidKeySpecException {
-        if (cipherEncryptor == null) {
-            cipherEncryptor = getNewCipherForEncrypt();
-        }
-        return cipherEncryptor;
+    public static Cipher getCipherForEncrypt() {
+        return encryptCipherPool.getNextElement();
     }
 
     public static Cipher getNewCipherForEncrypt() throws NoSuchAlgorithmException, InvalidAlgorithmParameterException, NoSuchPaddingException,
@@ -93,6 +84,6 @@ public class CipherInitializer {
     }
 
     public static void resetCipherForEncrypt() {
-        cipherEncryptor = null;
+        encryptCipherPool.reset();
     }
 }
