@@ -10,7 +10,7 @@ import static com.biit.cipher.EncryptionConfiguration.cipherPoolSize;
 public abstract class CipherPool extends LimitedPool<Cipher> {
     private static final long EXPIRATION_TIME = 5 * 60 * 1000L;
     private static final int MAX_ITEMS = 10;
-    private boolean warningShown = false;
+    private static boolean warningShown = false;
 
     @Override
     public int getMaxElements() {
