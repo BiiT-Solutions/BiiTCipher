@@ -9,10 +9,13 @@ public class EncryptionConfiguration {
 
     public static String encryptionKey;
     public static String encryptionSalt;
+    public static String cipherPoolSize;
 
-    public EncryptionConfiguration(@Value("${encryption.key:}") String encryptionKey, @Value("${encryption.salt:}") String encryptionSalt) {
+    public EncryptionConfiguration(@Value("${encryption.key:}") String encryptionKey, @Value("${encryption.salt:}") String encryptionSalt,
+                                   @Value("${cipher.pool.size:}") String cipherPoolSize) {
         setEncryptionKey(encryptionKey);
         setEncryptionSalt(encryptionSalt);
+        setCipherPoolSize(cipherPoolSize);
     }
 
     private static synchronized void setEncryptionKey(String encryptionKey) {
@@ -23,6 +26,11 @@ public class EncryptionConfiguration {
     private static synchronized void setEncryptionSalt(String encryptionSalt) {
         CipherLogger.debug(EncryptionConfiguration.class, "Encryption salt '" + encryptionSalt + "'.");
         EncryptionConfiguration.encryptionSalt = encryptionSalt;
+    }
+
+    private static synchronized void setCipherPoolSize(String cipherPoolSize) {
+        CipherLogger.debug(EncryptionConfiguration.class, "Cipher pool size '" + cipherPoolSize + "'.");
+        EncryptionConfiguration.cipherPoolSize = cipherPoolSize;
     }
 
 

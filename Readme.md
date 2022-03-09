@@ -21,6 +21,12 @@ encryption.key=asd123
 encryption.salt=123456
 ```
 
+Also, if you want to change the pool size of ciphers to a value different from 10, you can set this property:
+
+```
+cipher.pool.size=15
+```
+
 Remember to include the package `com.biit.cipher` into the Spring configuration:
 
 ```

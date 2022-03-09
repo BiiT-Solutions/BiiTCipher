@@ -18,4 +18,8 @@ public class EncryptorPropertyTest extends AbstractTestNGSpringContextTests {
         Assert.assertEquals(EncryptionConfiguration.encryptionSalt, "123456");
     }
 
+    public void checkCipherPoolSize() {
+        Assert.assertEquals(EncryptionConfiguration.cipherPoolSize, "15");
+    }
+
 }
