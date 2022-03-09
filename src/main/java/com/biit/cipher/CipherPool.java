@@ -16,10 +16,10 @@ public abstract class CipherPool extends LimitedPool<Cipher> {
         if (cipherPoolSize != null) {
             try {
                 return Integer.parseInt(cipherPoolSize);
-            } catch (NullPointerException e) {
-                CipherLogger.warning(this.getClass(), "Invalid value '" + cipherPoolSize + "' on property 'cipher.pool.size'.");
+            } catch (NumberFormatException ignored) {
             }
         }
+        CipherLogger.warning(this.getClass(), "Invalid value '" + cipherPoolSize + "' on property 'cipher.pool.size' using default value '" + MAX_ITEMS + "'.");
         return MAX_ITEMS;
     }
 
