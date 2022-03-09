@@ -10,6 +10,7 @@ import static com.biit.cipher.EncryptionConfiguration.cipherPoolSize;
 public abstract class CipherPool extends LimitedPool<Cipher> {
     private static final long EXPIRATION_TIME = 5 * 60 * 1000L;
     private static final int MAX_ITEMS = 10;
+    private boolean warningShown = false;
 
     @Override
     public int getMaxElements() {
@@ -19,7 +20,11 @@ public abstract class CipherPool extends LimitedPool<Cipher> {
             } catch (NumberFormatException ignored) {
             }
         }
-        CipherLogger.warning(this.getClass(), "Invalid value '" + cipherPoolSize + "' on property 'cipher.pool.size' using default value '" + MAX_ITEMS + "'.");
+        if (!warningShown) {
+            CipherLogger.warning(this.getClass(), "Invalid value '" + cipherPoolSize + "' on property 'cipher.pool.size' using default value '"
+                    + MAX_ITEMS + "'.");
+            warningShown = true;
+        }
         return MAX_ITEMS;
     }
 
