@@ -29,8 +29,8 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:git.biit-solutions.com:BiiT/BiiTCipher.git</connection>
-        <developerConnection>scm:git:git.biit-solutions.com:BiiT/BiiTCipher.git</developerConnection>
+        <connection>scm:git:git.biit-solutions.com:Java/BiiTCipher.git</connection>
+        <developerConnection>scm:git:git.biit-solutions.com:Java/BiiTCipher.git</developerConnection>
         <tag>biit-cipher</tag>
     </scm>
 
