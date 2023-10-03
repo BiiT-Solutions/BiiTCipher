@@ -4,11 +4,15 @@ import com.biit.cipher.logger.CipherLogger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+@SuppressWarnings("checkstyle:HideUtilityClassConstructor")
 @Component
 public class EncryptionConfiguration {
 
+    @SuppressWarnings("checkstyle:VisibilityModifier")
     public static String encryptionKey;
+    @SuppressWarnings("checkstyle:VisibilityModifier")
     public static String encryptionSalt;
+    @SuppressWarnings("checkstyle:VisibilityModifier")
     public static String cipherPoolSize;
 
     public EncryptionConfiguration(@Value("${encryption.key:}") String encryptionKey, @Value("${encryption.salt:}") String encryptionSalt,
