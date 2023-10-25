@@ -4,7 +4,7 @@
     <groupId>com.biit</groupId>
     <artifactId>cipher</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.69-SNAPSHOT</version>
+    <version>1.0.69</version>
     <name>Basic Cipher tool</name>
     <description>Used for cipher data.</description>
 
@@ -31,7 +31,7 @@
     <scm>
         <connection>scm:git:git.biit-solutions.com:Java/BiiTCipher.git</connection>
         <developerConnection>scm:git:git.biit-solutions.com:Java/BiiTCipher.git</developerConnection>
-        <tag>biit-cipher</tag>
+        <tag>cipher-1.0.69</tag>
     </scm>
 
     <dependencies>
