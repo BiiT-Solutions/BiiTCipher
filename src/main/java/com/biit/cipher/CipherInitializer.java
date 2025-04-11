@@ -13,6 +13,7 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.security.spec.AlgorithmParameterSpec;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
@@ -26,6 +27,7 @@ public class CipherInitializer {
     private static final String SECRET_KEY_ALGORITHM = "AES";
     private static EncryptCipherPool encryptCipherPool = new EncryptCipherPool();
     private static DecryptCipherPool decryptCipherPool = new DecryptCipherPool();
+    private static final SecureRandom SECURE_RANDOM = new SecureRandom();
 
     public Cipher prepareAndInitCipher(int encryptionMode, String password, String salt) throws InvalidKeyException, NoSuchPaddingException,
             NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeySpecException {
@@ -59,6 +61,7 @@ public class CipherInitializer {
 
     private AlgorithmParameterSpec getAlgorithmParameterSpec(Cipher cipher) {
         final byte[] iv = new byte[getCipherBlockSize(cipher)];
+        SECURE_RANDOM.nextBytes(iv);
         return new IvParameterSpec(iv);
     }
 
