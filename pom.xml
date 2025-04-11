@@ -4,7 +4,7 @@
     <groupId>com.biit</groupId>
     <artifactId>cipher</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.99-SNAPSHOT</version>
+    <version>1.0.121-SNAPSHOT</version>
     <name>Basic Cipher tool</name>
     <description>Used for cipher data.</description>
 
