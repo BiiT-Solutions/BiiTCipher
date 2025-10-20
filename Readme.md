@@ -1,5 +1,8 @@
 # For encrypt/decrypt data.
 
+This project is only a cipher structure that can be used later for implementing different cipher algorithms. Includes common classes and properties that will be
+used in any other cipher library from BiiT.
+
 ### Import the dependency
 
 Include in your `pom.xml`
@@ -34,6 +37,7 @@ Remember to include the package `com.biit.cipher` into the Spring configuration:
 ```
 
 # Logging information
+
 You can enable the log of this library adding the next logger into your `logback.xml`
 
 ```
