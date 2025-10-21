@@ -44,6 +44,7 @@
     <scm>
         <connection>scm:git:ssh://git@github.com/BiiT-Solutions/BiiTCipher.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/BiiT-Solutions/BiiTCipher.git</developerConnection>
+        <url>https://github.com/BiiT-Solutions/BiiTCipher.git</url>
         <tag>biit-cipher</tag>
     </scm>
 
