@@ -4,7 +4,7 @@
     <groupId>com.biit-solutions</groupId>
     <artifactId>cipher</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.150</version>
+    <version>1.0.151-SNAPSHOT</version>
     <name>Basic Cipher tool</name>
     <description>Used for cipher data.</description>
 
@@ -45,7 +45,7 @@
         <connection>scm:git:ssh://git@github.com/BiiT-Solutions/BiiTCipher.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/BiiT-Solutions/BiiTCipher.git</developerConnection>
         <url>https://github.com/BiiT-Solutions/BiiTCipher.git</url>
-        <tag>cipher-1.0.150</tag>
+        <tag>biit-cipher</tag>
     </scm>
 
     <dependencies>
