@@ -9,7 +9,7 @@ Include in your `pom.xml`
 
 ```
 <dependency>
-    <groupId>com.biit</groupId>
+    <groupId>com.biit-solutions</groupId>
     <artifactId>cipher</artifactId>
     <version>${cipher.version}</version>
 </dependency>

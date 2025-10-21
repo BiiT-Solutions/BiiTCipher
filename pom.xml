@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.biit</groupId>
+    <groupId>com.biit-solutions</groupId>
     <artifactId>cipher</artifactId>
     <packaging>jar</packaging>
     <version>1.0.149-SNAPSHOT</version>
@@ -9,7 +9,7 @@
     <description>Used for cipher data.</description>
 
     <parent>
-        <groupId>com.biit</groupId>
+        <groupId>com.biit-solutions</groupId>
         <artifactId>versions</artifactId>
         <version>[1.0,1.1)</version>
         <relativePath /> <!-- lookup parent from repository -->
@@ -17,16 +17,16 @@
 
     <distributionManagement>
         <repository>
-            <id>central</id>
-            <name>libs-releases</name>
-            <url>https://artifactory.biit-solutions.com/artifactory/libs-release</url>
+            <id>github</id>
+            <name>BiiT-Solutions</name>
+            <url>https://maven.pkg.github.com/BiiT-Solutions/BiiTCipher</url>
         </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>libs-snapshot</name>
-            <url>https://artifactory.biit-solutions.com/artifactory/libs-snapshot</url>
-        </snapshotRepository>
     </distributionManagement>
+
+    <organization>
+        <name>BiiT Sourcing Solutions S.L.</name>
+        <url>https://www.biit-solutions.com/</url>
+    </organization>
     
     <licenses>
         <license>
@@ -45,7 +45,7 @@
     <dependencies>
         <!-- File access and logger -->
         <dependency>
-            <groupId>com.biit</groupId>
+            <groupId>com.biit-solutions</groupId>
             <artifactId>common-utils</artifactId>
         </dependency>
         <!-- log -->
