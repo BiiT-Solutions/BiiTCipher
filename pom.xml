@@ -17,10 +17,15 @@
 
     <distributionManagement>
         <repository>
+            <id>central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+        <snapshotRepository>
             <id>github</id>
             <name>BiiT-Solutions</name>
             <url>https://maven.pkg.github.com/BiiT-Solutions/BiiTCipher</url>
-        </repository>
+        </snapshotRepository>
     </distributionManagement>
 
     <organization>
@@ -37,8 +42,8 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git.biit-solutions.com:Java/BiiTCipher.git</connection>
-        <developerConnection>scm:git:git.biit-solutions.com:Java/BiiTCipher.git</developerConnection>
+        <connection>scm:git:ssh://git@github.com/BiiT-Solutions/BiiTCipher.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/BiiT-Solutions/BiiTCipher.git</developerConnection>
         <tag>biit-cipher</tag>
     </scm>
 
